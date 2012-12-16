@@ -44,7 +44,7 @@ namespace app\extensions\helper;
 
 class AwesomeHtml extends \lithium\template\Helper {
 
-	private $_strings = array(
+	protected $_strings = array(
 		'awesome'    => '<a class="awesome" href="{:url}">{:title}</a>',
 		'super_cool' => '<span class="super"><a class="cool" href="{:url}">{:title}</a></span>',
 	);
@@ -62,14 +62,14 @@ Once this has been setup, we can use the new helper as we would any of the core 
 
 {{{<p>
 	You should really check out
-	<?=$this->awesomeLink->create('Lithium', 'http://lithify.me', array(
+	<?=$this->awesomeHtml->link('Lithium', 'http://lithify.me', array(
 		'type' => 'super_cool'
 	)) ?>
 </p>}}}
 
 ## Extending (and replacing) Core Helpers
 
-Lithium gives preference to your classes over the core. If you want to create your own version of the core helpers, it's as easy as creating a new class inside the `app/extensions/helpers` directory with the same name.
+Lithium gives preference to your classes over the core. If you want to create your own version of the core helpers, it's as easy as creating a new class inside the `app/extensions/helper` directory with the same name.
 
 For example, we can replace Lithium's core `Html` helper class with our newly created helper class by renaming the class and filename to 'Html' rather than 'AwesomeHtml'. Doing this also allows you to leave your templates untouched: calls to `$this->html` will reference your helper automatically.
 
